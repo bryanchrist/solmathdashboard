@@ -21,3 +21,5 @@ camelot-py==0.10.1
 Wand==0.6.10
 
 ghostscript==0.7
+
+num2words==0.5.12
