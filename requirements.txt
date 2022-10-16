@@ -23,3 +23,11 @@ Wand==0.6.10
 ghostscript==0.7
 
 num2words==0.5.12
+
+torch==1.12.1
+
+torchvision==0.13.1
+
+torchaudio==0.12.1
+
+transformers==4.23.1
