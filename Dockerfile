@@ -14,6 +14,8 @@ RUN pip install -r requirements.txt
 
 RUN apt-get install -y tesseract-ocr
 
+RUN apt-get install git
+
 WORKDIR /solmathdashboard
 #DEFINES DIRECTORY FOR JUPYTER NOTEBOOKS FOR FILES
 

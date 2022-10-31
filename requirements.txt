@@ -31,3 +31,9 @@ torchvision==0.13.1
 torchaudio==0.12.1
 
 transformers==4.23.1
+
+matplotlib==3.6.1
+
+evaluate==0.3.0
+
+scikit-learn==1.1.3
