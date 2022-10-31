@@ -2,7 +2,7 @@
 FROM ubuntu:latest
 #Install ubuntu
 
-RUN apt-get update
+RUN apt-get -y update
 #update apt
 
 RUN apt-get install -y python3-pip
@@ -14,7 +14,8 @@ RUN pip install -r requirements.txt
 
 RUN apt-get install -y tesseract-ocr
 
-RUN apt-get install git
+RUN apt-get -y install git
+#install Git
 
 WORKDIR /solmathdashboard
 #DEFINES DIRECTORY FOR JUPYTER NOTEBOOKS FOR FILES
