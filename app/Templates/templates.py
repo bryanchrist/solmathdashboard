@@ -803,7 +803,7 @@ class g4_computation_decimal_subtraction_drinks():
         number1 = round(random.uniform(1, 2), 2)
         number2 = round(random.uniform(0, 1), 3)
         self.answer = number1 - number2
-        self.question = "{male_actor} drinks {number1} liters of {drink}. {female_actor} drinks {number2} liter of {drink}. How much more {drink} does {male_actor} drink than {female_actor}?".format(drink = drinks[0], 
+        self.question = "{male_actor} drinks {number1} liters of {drink}. {female_actor} drinks {number2} liters of {drink}. How much more {drink} does {male_actor} drink than {female_actor}?".format(drink = drinks[0], 
     number1 = number1, number2 = number2, male_actor = random.choice(male_actors), 
     female_actor = random.choice(female_actors))
         self.wrong_answers = []
@@ -1110,15 +1110,17 @@ class g4_estimation_division_running_problem():
         self.attr3 = 4
         number2 = random.randint(2, 10)
         number1 = random.randint(20,40)*number2
-        self.answer= round(number1/number2, -1)
-        self.question = "{male_actor} ran a total of {number1} minutes in a {number2}-day period. He ran the same number of minutes each day. What is the closest to the number of minutes {male_actor} ran each day?".format(
-    male_actor = random.choice(male_actors), number2= number2, number1 = number1) 
+        answer = number1/number2
+        self.answer= int(round(answer, -1))
+        self.question = "{male_actor} ran a total of {number1} minutes in a {number2}-day period. He ran the same number of minutes each day. What is the closest to the number of minutes {male_actor} ran each day?".format(male_actor = random.choice(male_actors), number2= number2, number1 = number1) 
         self.wrong_answers = []
         while len(self.wrong_answers)<3:
             number2 = random.randint(2, 10)
             number1 = random.randint(20,40)*number2
-            wrong = round(number1/number2, -1)
-            if wrong != self.answer and wrong not in self.wrong_answers: 
+            wrong = number1/number2
+            wrong = round(wrong, -1)
+            wrong = int(wrong)
+            if wrong != self.answer and wrong not in self.wrong_answers:
                 self.wrong_answers.append(wrong)
         self.choices = [self.answer] + self.wrong_answers
         random.shuffle(self.choices)
@@ -1139,8 +1141,8 @@ class g4_estimation_division_running_problem():
         if student_answer == self.correct_letter:
             return "You got the right answer. Nice work!"
         if student_answer!= self.correct_letter:
-            return "You didn't get the right answer this time. Keep trying and don't give up!"      
-
+            return "You didn't get the right answer this time. Keep trying and don't give up!"   
+        
 #same problem with fractions
 class g4_computation_fraction_subtraction():
     def __init__(self):
