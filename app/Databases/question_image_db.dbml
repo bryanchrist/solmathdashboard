@@ -1,0 +1,24 @@
+Project SOL_Question_Database {
+  database_type: 'MongoDB'
+  Note: '''
+    # SOL Database
+    The data come from the Virginia Department of Education (VDOE) SOL test preparation resources. 
+  '''
+}
+Questions as q {
+  question_number varchar [pk]
+  grade_level int [pk]
+  standard varchar
+  answer varchar
+  question_type varchar
+  note: "Data specific to each question."
+}
+Question_images as i {
+  question_number varchar [pk]
+  grade_level int [pk]
+  image pdf
+  note: "Data specific to each image."
+}
+
+Ref: q.grade_level - i.grade_level
+Ref: q.question_number - i.question_number

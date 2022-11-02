@@ -17,6 +17,11 @@ RUN apt-get install -y tesseract-ocr
 RUN apt-get -y install git
 #install Git
 
+RUN curl -fsSL https://deb.nodesource.com/setup_19.x | bash - &&\
+apt-get install -y nodejs
+
+RUN npm install -g dbdocs
+
 WORKDIR /solmathdashboard
 #DEFINES DIRECTORY FOR JUPYTER NOTEBOOKS FOR FILES
 

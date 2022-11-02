@@ -1102,46 +1102,7 @@ class g4_computation_subtraction_word_problem():
             return "You didn't get the right answer this time. Keep trying and don't give up!"    
 
 
-class g4_estimation_division_running_problem():
-    def __init__(self):
-        
-        self.attr1 = "Computation and Estimation"
-        self.attr2 = "Division"
-        self.attr3 = 4
-        number2 = random.randint(2, 10)
-        number1 = random.randint(20,40)*number2
-        answer = number1/number2
-        self.answer= int(round(answer, -1))
-        self.question = "{male_actor} ran a total of {number1} minutes in a {number2}-day period. He ran the same number of minutes each day. What is the closest to the number of minutes {male_actor} ran each day?".format(male_actor = random.choice(male_actors), number2= number2, number1 = number1) 
-        self.wrong_answers = []
-        while len(self.wrong_answers)<3:
-            number2 = random.randint(2, 10)
-            number1 = random.randint(20,40)*number2
-            wrong = number1/number2
-            wrong = round(wrong, -1)
-            wrong = int(wrong)
-            if wrong != self.answer and wrong not in self.wrong_answers:
-                self.wrong_answers.append(wrong)
-        self.choices = [self.answer] + self.wrong_answers
-        random.shuffle(self.choices)
-        self.correct_index = self.choices.index(self.answer)
-        self.correct_letter = ['a', 'b', 'c', 'd'][self.correct_index]
-        
-    def print_question(self):
-        return self.question
-    
-    def print_choices(self):
-        d = pd.DataFrame(self.choices, ['a', 'b', 'c', 'd'])
-        d.columns = ['']
-        return d
-    
-    def student_answer(self, student_answer):
-        if student_answer not in ['a', 'b', 'c', 'd']:
-            return "Please type a, b, c, or d."
-        if student_answer == self.correct_letter:
-            return "You got the right answer. Nice work!"
-        if student_answer!= self.correct_letter:
-            return "You didn't get the right answer this time. Keep trying and don't give up!"   
+
         
 #same problem with fractions
 class g4_computation_fraction_subtraction():
@@ -1560,52 +1521,6 @@ class g4_number_sense_place_value_big_number_value():
 
             if wrong != self.answer and wrong not in self.wrong_answers: 
                 self.wrong_answers.append(wrong)
-        self.choices = [self.answer] + self.wrong_answers
-        random.shuffle(self.choices)
-        self.correct_index = self.choices.index(self.answer)
-        self.correct_letter = ['a', 'b', 'c', 'd'][self.correct_index]
-        
-    def print_question(self):
-        return self.question
-    
-    def print_choices(self):
-        d = pd.DataFrame(self.choices, ['a', 'b', 'c', 'd'])
-        d.columns = ['']
-        return d
-    
-    def student_answer(self, student_answer):
-        if student_answer not in ['a', 'b', 'c', 'd']:
-            return "Please type a, b, c, or d."
-        if student_answer == self.correct_letter:
-            return "You got the right answer. Nice work!"
-        if student_answer!= self.correct_letter:
-            return "You didn't get the right answer this time. Keep trying and don't give up!" 
-        
-class g4_number_sense_decimal_largest_value():
-    def __init__(self):
-        
-        self.attr1 = "Number and Number Sense"
-        self.attr2 = "Decimal Comparison"
-        self.attr3 = 4
-        number1 = round(random.uniform(13, 14), 2)
-        number2 = round(random.uniform(13, 14), 2)
-        number3 = round(random.uniform(13, 14), 2)
-        number4 = round(random.uniform(13, 14), 2)
-        numbers = [number1, number2, number3, number4]
-        size = random.choice(sizes)
-        if size == "largest":  
-            self.answer = max(number1, number2, number3, number4)
-        if size == "smallest":  
-            self.answer = min(number1, number2, number3, number4)
-        self.question= "Which of the four following numbers is {size}? {number1}, {number2}, {number3}, {number4}".format(
-    size = size, number1 = number1, number2 = number2, 
-    number3 = number3, number4 = number4)
-        self.wrong_answers = []
-        while len(self.wrong_answers)<3:
-            for number in numbers:
-                wrong = number
-                if wrong != self.answer and wrong not in self.wrong_answers: 
-                    self.wrong_answers.append(wrong)
         self.choices = [self.answer] + self.wrong_answers
         random.shuffle(self.choices)
         self.correct_index = self.choices.index(self.answer)
