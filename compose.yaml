@@ -1,0 +1,7 @@
+services:
+    jupyter:
+        image: solmathdashboard
+        volumes:
+            - ./:/solmathdashboard
+        ports:
+            - "8889:8888"

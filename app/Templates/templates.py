@@ -86,7 +86,7 @@ class g4_functions_weather_graph():
         target_val = random.randint(0,70)
         i =closest_value(self.temperatures, target_val)
         self.answer = self.days[i]
-        self.question = "This graph shows the morning temperature in a city for each of four days. The morning temperature on Thursday was {target} Degrees F. Based on the data in this graph, which day had a temperature closest to Thursday's temperature?".format(target= target_val)
+        self.question = "This graph shows the morning temperature in a city for each of four days. The morning temperature on Thursday was {target} degrees F. Based on the data in this graph, which day had a temperature closest to Thursday's temperature?".format(target= target_val)
         self.wrong_answers = []
         while len(self.wrong_answers)<3:
             wrong = random.choice(self.days)
@@ -377,14 +377,18 @@ class g4_computation_multiplication_specific_method():
         number1 = random.randint(2, 10)
         number2 = random.randint(2, 10)
         self.answer = number1 * number2
+        self.question= "Use {method} to find {number1} X {number2}.".format(method = random.choice(methods), number1 = number1, number2 = number2)
         self.wrong_answers = []
         wrong = number1 + number2
         self.wrong_answers.append(wrong)
-        while len(self.wrong_answers)<3:
-            wrong = random.randint(2,10)*random.randint(2,10)
-            if wrong != self.answer and wrong not in self.wrong_answers:
-                self.wrong_answers.append(wrong)
-        self.question= "Use {method} to find {number1} X {number2}.".format(method = random.choice(methods), number1 = number1, number2 = number2)
+        wrong1 = np.random.randint(low = 2,high=10,size=100)
+        wrong2 = np.random.randint(low = 2,high=10,size=100)
+        wrong = wrong1*wrong2
+        wrong = np.unique(wrong[wrong!=self.answer])
+        np.random.shuffle(wrong)
+        wrong = wrong[0:2].tolist()
+        for i in wrong:
+            self.wrong_answers.append(i)
         self.choices = [self.answer] + self.wrong_answers
         random.shuffle(self.choices)
         self.correct_index = self.choices.index(self.answer)
@@ -422,10 +426,14 @@ class g4_computation_multiplication_male_bags():
         self.wrong_answers = []
         wrong = number1 + number2
         self.wrong_answers.append(wrong)
-        while len(self.wrong_answers)<3:
-            wrong = random.randint(2,10)*random.randint(2,10)
-            if wrong != self.answer and wrong not in self.wrong_answers:
-                self.wrong_answers.append(wrong)
+        wrong1 = np.random.randint(low = 2,high=20,size=10)
+        wrong2 = np.random.randint(low = 2,high=20,size=10)
+        wrong = wrong1*wrong2
+        wrong = np.unique(wrong[wrong!=self.answer])
+        np.random.shuffle(wrong)
+        wrong = wrong[0:2].tolist()
+        for i in wrong:
+            self.wrong_answers.append(i)
         self.choices = [self.answer] + self.wrong_answers
         random.shuffle(self.choices)
         self.correct_index = self.choices.index(self.answer)
@@ -463,10 +471,14 @@ class g4_computation_multiplication_female_bags():
         self.wrong_answers = []
         wrong = number1 + number2
         self.wrong_answers.append(wrong)
-        while len(self.wrong_answers)<3:
-            wrong = random.randint(2,10)*random.randint(2,10)
-            if wrong != self.answer and wrong not in self.wrong_answers:
-                self.wrong_answers.append(wrong)
+        wrong1 = np.random.randint(low = 2,high=20,size=10)
+        wrong2 = np.random.randint(low = 2,high=20,size=10)
+        wrong = wrong1*wrong2
+        wrong = np.unique(wrong[wrong!=self.answer])
+        np.random.shuffle(wrong)
+        wrong = wrong[0:2].tolist()
+        for i in wrong:
+            self.wrong_answers.append(i)
         self.choices = [self.answer] + self.wrong_answers
         random.shuffle(self.choices)
         self.correct_index = self.choices.index(self.answer)
@@ -508,10 +520,18 @@ class g4_computation_multiplication_double_bags():
         self.wrong_answers = []
         wrong = number1 + number2 + number3+number4
         self.wrong_answers.append(wrong)
-        while len(self.wrong_answers)<3:
-            wrong = (random.randint(2,20)*random.randint(2,20)) + (random.randint(2,20)*random.randint(2,20))
-            if wrong != self.answer and wrong not in self.wrong_answers:
-                self.wrong_answers.append(wrong)
+        wrong1 = np.random.randint(low = 2,high=20,size=10)
+        wrong2 = np.random.randint(low = 2,high=20,size=10)
+        wrong3=np.random.randint(low = 2,high=20,size=10)
+        wrong4= np.random.randint(low = 2,high=20,size=10)
+        wrong_1 = wrong1*wrong2 
+        wrong_2 = wrong3*wrong4
+        wrong = wrong_1+wrong_2
+        wrong = np.unique(wrong[wrong!=self.answer])
+        np.random.shuffle(wrong)
+        wrong = wrong[0:2].tolist()
+        for i in wrong:
+            self.wrong_answers.append(i)
         self.choices = [self.answer] + self.wrong_answers
         random.shuffle(self.choices)
         self.correct_index = self.choices.index(self.answer)
@@ -550,10 +570,14 @@ class g4_computation_multiplication_fortnite():
         self.wrong_answers = []
         wrong = number1 + number2
         self.wrong_answers.append(wrong)
-        while len(self.wrong_answers)<3:
-            wrong = random.randint(2,20)*random.randint(2,20)
-            if wrong != self.answer and wrong not in self.wrong_answers:
-                self.wrong_answers.append(wrong)
+        wrong1 = np.random.randint(low = 2,high=20,size=10)
+        wrong2 = np.random.randint(low = 2,high=20,size=10)
+        wrong = wrong1*wrong2
+        wrong = np.unique(wrong[wrong!=self.answer])
+        np.random.shuffle(wrong)
+        wrong = wrong[0:2].tolist()
+        for i in wrong:
+            self.wrong_answers.append(i)
         self.choices = [self.answer] + self.wrong_answers
         random.shuffle(self.choices)
         self.correct_index = self.choices.index(self.answer)
@@ -638,16 +662,20 @@ class g4_computation_big_num_subtraction():
         formatted_number2 = number2[0] + "," + number2[1:4]
         self.question = "{number1} - {number2} = ___".format(number1 = formatted_number1, number2 = formatted_number2)
         self.wrong_answers = []
-        while len(self.wrong_answers)<3:
-            wrong = random.randint(5001,12001) - random.randint(1001,4999)
-            if wrong>9999:
-                wrong = str(wrong)
-                wrong = wrong[0:2] + "," + wrong[2:5]
-            elif wrong<=9999 and wrong>=1000:
-                wrong = str(wrong)
-                wrong = wrong[0]+ "," +wrong[1:4]
-            if wrong != self.answer and wrong not in self.wrong_answers:
-                self.wrong_answers.append(wrong)
+        wrong1 = np.random.randint(low = 5001,high=12001,size=10)
+        wrong2 = np.random.randint(low = 1001,high=4999,size=10)
+        wrong = wrong1-wrong2
+        wrong = np.unique(wrong[wrong!=answer])
+        np.random.shuffle(wrong)
+        wrong = wrong[0:3].tolist()
+        for i in wrong:
+            if i>9999:
+                i = str(i)
+                i = i[0:2] + "," + i[2:5]
+            elif i<=9999 and i>=1000:
+                i = str(i)
+                i = i[0]+ "," +i[1:4]
+            self.wrong_answers.append(i)
         self.choices = [self.answer] + self.wrong_answers
         random.shuffle(self.choices)
         self.correct_index = self.choices.index(self.answer)
@@ -692,16 +720,20 @@ class g4_computation_big_num_addition():
         formatted_number2 = number2[0] + "," + number2[1:4]
         self.question = "{number1} + {number2} = ___".format(number1 = formatted_number1, number2 = formatted_number2)
         self.wrong_answers = []
-        while len(self.wrong_answers)<3:
-            wrong = random.randint(1001,9999) + random.randint(1001,9999)
-            if wrong>9999:
-                wrong = str(wrong)
-                wrong = wrong[0:2] + "," + wrong[2:5]
-            elif wrong<=9999 and wrong>=1000:
-                wrong = str(wrong)
-                wrong = wrong[0]+ "," +wrong[1:4]
-            if wrong != self.answer and wrong not in self.wrong_answers:
-                self.wrong_answers.append(wrong)
+        wrong1 = np.random.randint(low = 1001,high=9999,size=10)
+        wrong2 = np.random.randint(low = 1001,high=9999,size=10)
+        wrong = wrong1+wrong2
+        wrong = np.unique(wrong[wrong!=answer])
+        np.random.shuffle(wrong)
+        wrong = wrong[0:3].tolist()
+        for i in wrong:
+            if i>9999:
+                i = str(i)
+                i = i[0:2] + "," + i[2:5]
+            elif i<=9999 and i>=1000:
+                i = str(i)
+                i = i[0]+ "," +i[1:4]
+            self.wrong_answers.append(i)
         self.choices = [self.answer] + self.wrong_answers
         random.shuffle(self.choices)
         self.correct_index = self.choices.index(self.answer)
@@ -734,14 +766,21 @@ class g4_computation_decimal_addition():
         self.answer = number1 + number2
         self.question = "{number1} + {number2} = ___".format(number1 = number1, number2 = number2)
         self.wrong_answers = []
-        while len(self.wrong_answers)<3:
-            wrong = round(random.uniform(10, 20), 1) + round(random.uniform(10, 20), 1)
-            if wrong != self.answer and wrong not in self.wrong_answers:
-                self.wrong_answers.append(wrong)
+        wrong1 = np.random.uniform(low = 10,high=20,size=10)
+        wrong2 = np.random.uniform(low = 10,high=20,size=10)
+        wrong1 = np.round(wrong1, 1)
+        wrong2 = np.round(wrong2, 1)
+        wrong = wrong1+wrong2
+        wrong = np.unique(wrong[wrong!=self.answer])
+        np.random.shuffle(wrong)
+        wrong = wrong[0:3].tolist()
+        for i in wrong:
+            self.wrong_answers.append(i)
         self.choices = [self.answer] + self.wrong_answers
         random.shuffle(self.choices)
         self.correct_index = self.choices.index(self.answer)
         self.correct_letter = ['a', 'b', 'c', 'd'][self.correct_index]
+       
         
     def print_question(self):
         return self.question
@@ -801,16 +840,22 @@ class g4_computation_decimal_subtraction_drinks():
         self.attr2 = "Decimal Addition/Subtraction"
         self.attr3 = 4
         number1 = round(random.uniform(1, 2), 2)
-        number2 = round(random.uniform(0, 1), 3)
+        number2 = round(random.uniform(0, .99), 3)
         self.answer = number1 - number2
         self.question = "{male_actor} drinks {number1} liters of {drink}. {female_actor} drinks {number2} liters of {drink}. How much more {drink} does {male_actor} drink than {female_actor}?".format(drink = drinks[0], 
     number1 = number1, number2 = number2, male_actor = random.choice(male_actors), 
     female_actor = random.choice(female_actors))
         self.wrong_answers = []
-        while len(self.wrong_answers)<3:
-            wrong = round(random.uniform(1, 2), 2) - round(random.uniform(0, 1), 3)
-            if wrong != self.answer and wrong not in self.wrong_answers:
-                self.wrong_answers.append(wrong)
+        wrong1 = np.random.uniform(low = 1,high=2,size=10)
+        wrong2 = np.random.uniform(low = 0,high=.99,size=10)
+        wrong1 = np.round(wrong1, 2)
+        wrong2 = np.round(wrong2, 3)
+        wrong = wrong1-wrong2
+        wrong = np.unique(wrong[wrong!=self.answer])
+        np.random.shuffle(wrong)
+        wrong = wrong[0:3].tolist()
+        for i in wrong:
+            self.wrong_answers.append(i)
         self.choices = [self.answer] + self.wrong_answers
         random.shuffle(self.choices)
         self.correct_index = self.choices.index(self.answer)
@@ -879,15 +924,33 @@ class g4_computation_multiplication_two_digit_word_problem():
         self.attr3 = 4
         number1 = random.randint(20, 100)
         number2 = random.randint(20, 100)
-        self.answer = number1 * number2
+        answer = number1 * number2
+        if  answer>9999:
+                self.answer = str(answer)
+                self.answer = self.answer[0:2] + "," + self.answer[2:5]
+        elif answer<=9999 and answer>=1000:
+                self.answer = str(answer)
+                self.answer = self.answer[0]+ "," +self.answer[1:4]
+        else:
+            self.answer=answer
         self.question = "What is the {key_word} of {number1} and {number2}?".format(key_word = key_words[2], number1 = number1, number2 = number2)
         self.wrong_answers = []
         wrong = number1 + number2
         self.wrong_answers.append(wrong)
-        while len(self.wrong_answers)<3:
-            wrong = random.randint(20, 100) * random.randint(20, 100)
-            if wrong != self.answer and wrong not in self.wrong_answers:
-                self.wrong_answers.append(wrong)
+        wrong1 = np.random.randint(low = 20,high=100,size=10)
+        wrong2 = np.random.randint(low = 20,high=100,size=10)
+        wrong = wrong1*wrong2
+        wrong = np.unique(wrong[wrong!=answer])
+        np.random.shuffle(wrong)
+        wrong = wrong[0:2].tolist()
+        for i in wrong:
+            if i>9999:
+                i = str(i)
+                i = i[0:2] + "," + i[2:5]
+            elif i<=9999 and i>=1000:
+                i = str(i)
+                i = i[0]+ "," +i[1:4]
+            self.wrong_answers.append(i)
         self.choices = [self.answer] + self.wrong_answers
         random.shuffle(self.choices)
         self.correct_index = self.choices.index(self.answer)
@@ -923,10 +986,14 @@ class g4_computation_multiplication_with_drinks():
         self.wrong_answers = []
         wrong = number1 + number2
         self.wrong_answers.append(wrong)
-        while len(self.wrong_answers)<3:
-            wrong = random.randint(2, 10) * random.randint(2, 20)
-            if wrong != self.answer and wrong not in self.wrong_answers:
-                self.wrong_answers.append(wrong)
+        wrong1 = np.random.randint(low = 2,high=20,size=10)
+        wrong2 = np.random.randint(low = 2,high=10,size=10)
+        wrong = wrong1*wrong2
+        wrong = np.unique(wrong[wrong!=self.answer])
+        np.random.shuffle(wrong)
+        wrong = wrong[0:2].tolist()
+        for i in wrong:
+            self.wrong_answers.append(i)
         self.choices = [self.answer] + self.wrong_answers
         random.shuffle(self.choices)
         self.correct_index = self.choices.index(self.answer)
@@ -958,23 +1025,31 @@ class g4_estimation_multiplication_store():
         number2 = random.randint(10, 90)
         answer = round(number1*number2, -2)
         if answer >=1000:
-            answer= str(answer)
-            self.answer = "$"+answer[0]+"," +answer[1:]
+            self.answer= str(answer)
+            self.answer = "$"+self.answer[0]+"," +self.answer[1:]
         elif answer<1000:
-            answer= str(answer)
-            self.answer = "$"+answer
-        self.question = "At a store, {thing} cost ${number1} each. Which is closest to the {key_word} of {number2} {thing}?".format(number1 = number1, number2 = number2, thing = random.choice(things), key_word = key_words[3])
+            self.answer= str(answer)
+            self.answer = "$"+self.answer
+        self.question = "At a store, {thing} cost ${number1} each. Which is closest to the {key_word} of {number2} {thing}?".format(number1 = number1, number2 = number2, thing =       random.choice(things), key_word = key_words[3])
         self.wrong_answers = []
-        while len(self.wrong_answers)<3:
-            wrong = round(random.randint(10, 30)*random.randint(10, 90), -2)
-            if wrong>=1000:
-                wrong= str(wrong)
-                wrong= "$"+wrong[0]+","+ wrong[1:]
-            elif wrong<1000:
-                wrong = str(wrong)
-                wrong = "$"+wrong
-            if wrong != self.answer and wrong not in self.wrong_answers:
-                self.wrong_answers.append(wrong)
+        wrong = number1 + number2
+        wrong= "$"+str(wrong)
+        self.wrong_answers.append(wrong)
+        wrong1 = np.random.randint(low = 10,high=30,size=10)
+        wrong2 = np.random.randint(low = 10,high=90,size=10)
+        wrong = wrong1*wrong2
+        wrong = np.round(wrong, -2)
+        wrong = np.unique(wrong[wrong!=answer])
+        np.random.shuffle(wrong)
+        wrong = wrong[0:2].tolist()
+        for i in wrong:
+            if i>=1000:
+                i= str(i)
+                i= "$"+i[0]+","+ i[1:]
+            elif i<1000:
+                i = str(i)
+                i = "$"+i
+            self.wrong_answers.append(i)
         self.choices = [self.answer] + self.wrong_answers
         random.shuffle(self.choices)
         self.correct_index = self.choices.index(self.answer)
@@ -1002,7 +1077,7 @@ class g4_computation_multiplication_selling_items():
         self.attr1= "Computation and Estimation"
         self.attr2 = "Multiplication"
         self.attr3 = 4
-        number1 = random.randint(100,1000)
+        number1 = random.randint(100,999)
         number2 = random.randint(2,10)
         answer = number1*number2
         if answer >=1000:
@@ -1014,18 +1089,22 @@ class g4_computation_multiplication_selling_items():
         self.question = "{female_actor} sold {number1} {thing}. Each box cost ${number2}. What was the {key_word} of all the {thing} sold?".format(number1 = number1, number2 = number2, thing = random.choice(things), key_word = key_words[3], female_actor = random.choice(female_actors))
         self.wrong_answers = []
         wrong = number1 + number2
-        wrong = "$"+str(wrong)
+        wrong= "$"+str(wrong)
         self.wrong_answers.append(wrong)
-        while len(self.wrong_answers)<3:
-            wrong = random.randint(100,1000) * random.randint(2,10)
-            if wrong>=1000:
-                wrong= str(wrong)
-                wrong= "$"+wrong[0]+","+ wrong[1:]
-            elif wrong<1000:
-                wrong = str(wrong)
-                wrong = "$"+wrong
-            if wrong != self.answer and wrong not in self.wrong_answers:
-                self.wrong_answers.append(wrong)
+        wrong1 = np.random.randint(low = 100,high=999,size=200)
+        wrong2 = np.random.randint(low = 2,high=10,size=200)
+        wrong = wrong1*wrong2
+        wrong = np.unique(wrong[wrong!=answer])
+        np.random.shuffle(wrong)
+        wrong = wrong[0:2].tolist()
+        for i in wrong:
+            if i>=1000:
+                i= str(i)
+                i= "$"+i[0]+","+ i[1:]
+            elif i<1000:
+                i = str(i)
+                i = "$"+i
+            self.wrong_answers.append(i)
         self.choices = [self.answer] + self.wrong_answers
         random.shuffle(self.choices)
         self.correct_index = self.choices.index(self.answer)
@@ -1070,16 +1149,20 @@ class g4_computation_subtraction_word_problem():
         self.question = "What is the {key_word} between {number1} and {number2}?".format(number2 = number2, 
                                                                                   key_word = key_words[4], number1= formatted_number1)
         self.wrong_answers = []
-        while len(self.wrong_answers)<3:
-            wrong = random.randint(1000,5000) - random.randint(100,999)
-            if wrong>9999:
-                wrong = str(wrong)
-                wrong = wrong[0:2] + "," + wrong[2:5]
-            elif wrong<=9999 and wrong>=1000:
-                wrong = str(wrong)
-                wrong = wrong[0]+ "," +wrong[1:4]
-            if wrong != self.answer and wrong not in self.wrong_answers:
-                self.wrong_answers.append(wrong)
+        wrong1 = np.random.randint(low = 1000,high=5000,size=10)
+        wrong2 = np.random.randint(low = 100,high=999,size=10)
+        wrong = wrong1-wrong2
+        wrong = np.unique(wrong[wrong!=answer])
+        np.random.shuffle(wrong)
+        wrong = wrong[0:3].tolist()
+        for i in wrong:
+            if i>9999:
+                i = str(i)
+                i = i[0:2] + "," + i[2:5]
+            elif i<=9999 and i>=1000:
+                i = str(i)
+                i = i[0]+ "," +i[1:4]
+            self.wrong_answers.append(i)
         self.choices = [self.answer] + self.wrong_answers
         random.shuffle(self.choices)
         self.correct_index = self.choices.index(self.answer)
@@ -1147,20 +1230,36 @@ class g4_computation_multiplication_situps():
         number1 = random.randint(10,40)
         number2= random.randint(2,10)
         number3= random.randint(2,10)
-        self.answer = (number1 * number2) *number3
+        answer = (number1 * number2) *number3
+        if  answer>9999:
+                self.answer = str(answer)
+                self.answer = self.answer[0:2] + "," + self.answer[2:5]
+        elif answer<=9999 and answer>=1000:
+                self.answer = str(answer)
+                self.answer = self.answer[0]+ "," +self.answer[1:4]
+        else: 
+            self.answer = answer
         self.question= "{male_actor} does {number1} sit-ups {number2} times per day. What is the total number of sit-ups {male_actor} does in {number3} days?".format(
     male_actor= random.choice(male_actors), number1 = number1, number2= number2, 
         number3= number3)
         self.wrong_answers = []
-        wrong = number1 + number2
+        wrong = number1 + number2 + number3
         self.wrong_answers.append(wrong)
-        while len(self.wrong_answers)<3:
-            number1 = random.randint(10,40)
-            number2= random.randint(2,10)
-            number3= random.randint(2,10)
-            wrong = (number1 * number2) *number3
-            if wrong != self.answer and wrong not in self.wrong_answers: 
-                self.wrong_answers.append(wrong)
+        wrong1 = np.random.randint(low = 10,high=40,size=100)
+        wrong2 = np.random.randint(low = 2,high=10,size=100)
+        wrong3 = np.random.randint(low = 2,high=10,size=100)
+        wrong = (wrong1*wrong2)*wrong3
+        wrong = np.unique(wrong[wrong!=answer])
+        np.random.shuffle(wrong)
+        wrong = wrong[0:2].tolist()
+        for i in wrong:
+            if i>9999:
+                i = str(i)
+                i = i[0:2] + "," + i[2:5]
+            elif i<=9999 and i>=1000:
+                i = str(i)
+                i = i[0]+ "," +i[1:4]
+            self.wrong_answers.append(i)
         self.choices = [self.answer] + self.wrong_answers
         random.shuffle(self.choices)
         self.correct_index = self.choices.index(self.answer)
@@ -1779,7 +1878,6 @@ class g4_number_sense_round_big_number():
 
 class g4_number_sense_fraction_ordering():
     #Question 24 would be better as a drag and drop 
-    #don't know how to store this answer
     def __init__(self):
         
         self.attr1 = "Number and Number Sense"
@@ -1932,10 +2030,13 @@ class g4_measurement_pounds_to_ounces():
         self.wrong_answers = []
         wrong = number1 + 16
         self.wrong_answers.append(wrong)
-        while len(self.wrong_answers)<3:
-            wrong= random.randint(1,9)*16
-            if wrong != self.answer and wrong not in self.wrong_answers: 
-                self.wrong_answers.append(wrong)
+        wrong1 = np.random.randint(low = 1,high=9,size=10)
+        wrong = wrong1*16
+        wrong = np.unique(wrong[wrong!=self.answer])
+        np.random.shuffle(wrong)
+        wrong = wrong[0:2].tolist()
+        for i in wrong:
+            self.wrong_answers.append(i)
         self.choices = [self.answer] + self.wrong_answers
         random.shuffle(self.choices)
         self.correct_index = self.choices.index(self.answer)
@@ -1971,10 +2072,13 @@ class g4_measurement_gallons_to_pints():
         self.wrong_answers = []
         wrong = number1 + 8
         self.wrong_answers.append(wrong)
-        while len(self.wrong_answers)<3:
-            wrong= random.randint(2,9)*8
-            if wrong != self.answer and wrong not in self.wrong_answers: 
-                self.wrong_answers.append(wrong)
+        wrong1 = np.random.randint(low = 2,high=9,size=10)
+        wrong = wrong1*8
+        wrong = np.unique(wrong[wrong!=self.answer])
+        np.random.shuffle(wrong)
+        wrong = wrong[0:2].tolist()
+        for i in wrong:
+            self.wrong_answers.append(i)
         self.choices = [self.answer] + self.wrong_answers
         random.shuffle(self.choices)
         self.correct_index = self.choices.index(self.answer)
@@ -2282,3 +2386,93 @@ class g4_pattern_increasing_numbers():
             return "You got the right answer. Nice work!"
         if student_answer!= self.correct_letter:
             return "You didn't get the right answer this time. Keep trying and don't give up!"
+
+class g4_number_sense_decimal_largest_value():
+    def __init__(self):
+        
+        self.attr1 = "Number and Number Sense"
+        self.attr2 = "Decimal Comparison"
+        self.attr3 = 4
+        number1 = round(random.uniform(13, 14), 2)
+        number2 = round(random.uniform(13, 14), 2)
+        number3 = round(random.uniform(13, 14), 2)
+        number4 = round(random.uniform(13, 14), 2)
+        numbers = [number1, number2, number3, number4]
+        size = random.choice(sizes)
+        if size == "largest":  
+            self.answer = max(number1, number2, number3, number4)
+        if size == "smallest":  
+            self.answer = min(number1, number2, number3, number4)
+        self.question= "Which of the four following numbers is {size}? {number1}, {number2}, {number3}, {number4}".format(
+    size = size, number1 = number1, number2 = number2, 
+    number3 = number3, number4 = number4)
+        self.wrong_answers = []
+        while len(self.wrong_answers)<3:
+            for number in numbers:
+                wrong = number
+                if wrong != self.answer and wrong not in self.wrong_answers: 
+                    self.wrong_answers.append(wrong)
+        self.choices = [self.answer] + self.wrong_answers
+        random.shuffle(self.choices)
+        self.correct_index = self.choices.index(self.answer)
+        self.correct_letter = ['a', 'b', 'c', 'd'][self.correct_index]
+        
+    def print_question(self):
+        return self.question
+    
+    def print_choices(self):
+        d = pd.DataFrame(self.choices, ['a', 'b', 'c', 'd'])
+        d.columns = ['']
+        return d
+    
+    def student_answer(self, student_answer):
+        if student_answer not in ['a', 'b', 'c', 'd']:
+            return "Please type a, b, c, or d."
+        if student_answer == self.correct_letter:
+            return "You got the right answer. Nice work!"
+        if student_answer!= self.correct_letter:
+            return "You didn't get the right answer this time. Keep trying and don't give up!" 
+
+class g4_estimation_division_running_problem():
+    def __init__(self):
+        
+        self.attr1 = "Computation and Estimation"
+        self.attr2 = "Division"
+        self.attr3 = 4
+        number2 = random.randint(2, 10)
+        number1 = random.randint(20,60)*number2
+        answer = number1/number2
+        self.answer= int(round(answer, -1))
+   
+        self.question = "{male_actor} ran a total of {number1} minutes in a {number2}-day period. He ran the same number of minutes each day. What is the closest to the number of minutes {male_actor} ran each day?".format(male_actor = random.choice(male_actors), number2= number2, number1 = number1) 
+        self.wrong_answers = []
+        wrong1 = np.random.randint(low = 2,high=10,size=10)
+        wrong2 = np.random.randint(low = 20,high=60,size=10) *wrong1
+        wrong = wrong2/wrong1
+        wrong = np.round(wrong, -1)
+        wrong = np.unique(wrong[wrong!=self.answer])
+        np.random.shuffle(wrong)
+        wrong = wrong[0:3].tolist()
+        for i in wrong:
+            i = int(i)
+            self.wrong_answers.append(i)
+        self.choices = [self.answer] + self.wrong_answers
+        random.shuffle(self.choices)
+        self.correct_index = self.choices.index(self.answer)
+        self.correct_letter = ['a', 'b', 'c', 'd'][self.correct_index]
+       
+    def print_question(self):
+        return self.question
+    
+    def print_choices(self):
+        d = pd.DataFrame(self.choices, ['a', 'b', 'c', 'd'])
+        d.columns = ['']
+        return d
+    
+    def student_answer(self, student_answer):
+        if student_answer not in ['a', 'b', 'c', 'd']:
+            return "Please type a, b, c, or d."
+        if student_answer == self.correct_letter:
+            return "You got the right answer. Nice work!"
+        if student_answer!= self.correct_letter:
+            return "You didn't get the right answer this time. Keep trying and don't give up!"   

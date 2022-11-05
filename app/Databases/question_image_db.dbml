@@ -5,7 +5,7 @@ Project SOL_Question_Database {
     The data come from the Virginia Department of Education (VDOE) SOL test preparation resources. 
   '''
 }
-Questions as q {
+Table Questions as Q {
   question_number varchar [pk]
   grade_level int [pk]
   standard varchar
@@ -13,12 +13,12 @@ Questions as q {
   question_type varchar
   note: "Data specific to each question."
 }
-Question_images as i {
+Table Question_images as I {
   question_number varchar [pk]
   grade_level int [pk]
   image pdf
   note: "Data specific to each image."
 }
 
-Ref: q.grade_level - i.grade_level
-Ref: q.question_number - i.question_number
+Ref: Q.grade_level - I.grade_level
+Ref: Q.question_number - I.question_number
