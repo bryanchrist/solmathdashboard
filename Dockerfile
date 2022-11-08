@@ -17,6 +17,11 @@ RUN apt-get install -y tesseract-ocr
 RUN apt-get -y install git
 #install Git
 
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=New York
+RUN apt-get install -y python3-tk
+#install tk
+
 RUN apt-get install -y nodejs npm
 
 RUN curl -fsSL https://deb.nodesource.com/setup_19.x | bash - &&\

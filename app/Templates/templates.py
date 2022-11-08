@@ -17,8 +17,8 @@ other_objects= ["Fornite skins", "books"]
 key_words = ["sum", "least common multiple", "product", "total cost", "difference", "common factor", "division", "place value"]
 drinks = ["Gatorade", "soda", "iced tea", "water"]
 things = ["Fortnite action figures", "Girlscout cookie boxes"]
-decimal_place_values = ["tenths", "hundredths", "thousandths"]
-decimal_place_values_singular = ["tenth", "hundredth", "thousandth"]
+decimal_place_values = ["ones", "tenths", "hundredths", "thousandths"]
+decimal_place_values_singular = ["whole number", "tenth", "hundredth", "thousandth"]
 whole_place_values = ["ones", "tens", "hundreds", "thousands", "ten thousands", "hundred thousands", "millions"]
 whole_place_values_no_ones = ["ten", "hundred", "thousand", "ten thousand", "hundred thousand", "million"]
 times = ['fastest', 'slowest']
@@ -102,8 +102,9 @@ class g4_functions_weather_graph():
         plt.title('Morning Temperature')
         plt.xlabel('Day')
         plt.ylabel('Temperature (Degrees F)')
-        return self.question
         plt.show()
+        return self.question
+        
 
     
     def print_choices(self):
@@ -194,8 +195,9 @@ class g4_number_sense_identify_fraction_number_line():
         plt.text(xmid, y-.9, '1/2', horizontalalignment='center')
 
         plt.axis('off')
-        return self.question
         plt.show()
+        return self.question
+        
         
     def student_answer(self, student_answer):
         if student_answer == self.answer:
@@ -274,8 +276,8 @@ class g4_probability_coin_flip_number_line():
         plt.text(xmid, y-.9, '1/2', horizontalalignment='center')
 
         plt.axis('off')
-        return self.question
         plt.show()
+        return self.question
         #student inputs answer directly 
     
     def student_answer(self, student_answer):
@@ -356,8 +358,8 @@ class g4_probability_dice_roll_number_line():
         plt.text(xmid, y-.9, '1/2', horizontalalignment='center')
 
         plt.axis('off')
-        return self.question
         plt.show()
+        return self.question
         #student inputs answer directly 
     
     def student_answer(self, student_answer):
@@ -624,7 +626,8 @@ class g4_number_sense__comparison_running_table():
         self.correct_letter = ['a', 'b', 'c', 'd'][self.correct_index]
         
     def print_question(self):
-        return self.question, self.question_df
+        print(self.question_df.to_string(index=False))
+        return self.question
     
     def print_choices(self):
         d = pd.DataFrame(self.choices, ['a', 'b', 'c', 'd'])
@@ -890,11 +893,14 @@ class g4_computation_lcm_word_problem():
         self.answer = math.lcm(number1, number3)
         self.question = "What is the {key_word} of {number1} and {number2}?".format(key_word = key_words[1], number1 = number1, number2 = number3)
         self.wrong_answers = []
-        while len(self.wrong_answers)<3:
-            factor = random.randint(2, 10)
-            wrong = math.lcm(random.randint(2, 10)*factor)
-            if wrong != self.answer and wrong not in self.wrong_answers:
-                self.wrong_answers.append(wrong)
+        wrong1 = np.random.randint(low = 2,high=6,size=10)
+        wrong2 = np.random.randint(low = 1,high=6,size=10)
+        wrong = wrong1*wrong2
+        wrong = np.unique(wrong[wrong!=self.answer])
+        np.random.shuffle(wrong)
+        wrong = wrong[0:3].tolist()
+        for i in wrong:
+            self.wrong_answers.append(i)
         self.choices = [self.answer] + self.wrong_answers
         random.shuffle(self.choices)
         self.correct_index = self.choices.index(self.answer)
@@ -1205,7 +1211,7 @@ class g4_computation_fraction_subtraction():
             number2 = random.randint(2, 6) *factor 
             number4 = random.randint(2, 6) *factor 
             commondenom = math.lcm(number2,number4)
-        self.answer = (number1/number2) - (number3/number4)
+        self.answer = abs((number1/number2) - (number3/number4))
         self.question = "What is the {key_word} between {number1}/{number2} and {number3}/{number4}?".format(key_word = key_words[4], 
                                                                                                        number1 = number1, 
                                                                                                        number2 = number2, 
@@ -1281,7 +1287,7 @@ class g4_computation_multiplication_situps():
         if student_answer!= self.correct_letter:
             return "You didn't get the right answer this time. Keep trying and don't give up!" 
 
-class g4_computation_common_factor_word_problem():
+class g4_computation_largest_common_factor_word_problem():
     def __init__(self):
         
         self.attr1 = "Computation and Estimation"
@@ -1291,20 +1297,18 @@ class g4_computation_common_factor_word_problem():
         number1 = random.randint(2,10)*factor
         number2= random.randint(2,10)*factor
         number3= random.randint(2,10)*factor
-        self.answer = random.choice(common_factor(number1, number2, number3))
-        self.question = "Which number is a {key_word} of {number1}, {number2}, and {number3}?".format(number1 = number1, 
+        common_factors = common_factor(number1, number2, number3)
+        self.answer = max(common_factors)
+        self.question = "Which number is the largest common factor of {number1}, {number2}, and {number3}?".format(number1 = number1, 
                                                                                         number2= number2, 
-                                                                                              number3= number3,
-                                                                                             key_word= key_words[5])
+                                                                                              number3= number3)
         self.wrong_answers = []
-        while len(self.wrong_answers)<3:
-            factor = random.randint(2, 10)
-            number1 = random.randint(2,10)*factor
-            number2= random.randint(2,10)*factor
-            number3= random.randint(2,10)*factor
-            wrong = random.choice(common_factor(number1, number2, number3))
-            if wrong != self.answer and wrong not in self.wrong_answers: 
-                self.wrong_answers.append(wrong)
+        wrong = np.random.randint(low = 2,high=10,size=12)
+        wrong = np.unique(wrong[wrong!=self.answer])
+        np.random.shuffle(wrong)
+        wrong = wrong[0:3].tolist()
+        for i in wrong:
+            self.wrong_answers.append(i)
         self.choices = [self.answer] + self.wrong_answers
         random.shuffle(self.choices)
         self.correct_index = self.choices.index(self.answer)
@@ -1337,6 +1341,9 @@ class g4_number_sense_decimal_place_value():
         self.question = "What digit is in the {place_value} place in {number1}?".format(place_value= place_value, 
                                                                                   number1=number1)
         number1= number1+0.00001
+        if place_value == "ones":
+            self.answer = int(get_digit(number1, 0))
+            
         if place_value == "tenths":
             self.answer= int(get_digit(number1, -1))
             
@@ -1347,16 +1354,12 @@ class g4_number_sense_decimal_place_value():
             self.answer= int(get_digit(number1, -3))
       
         self.wrong_answers = []
-        
-        condition=False
-        while condition==False:
-            digit = random.randint(1,9)
-            if digit != self.answer:
-                self.wrong_answers.append(digit)
-                condition = True 
         while len(self.wrong_answers)<3:
             place_value = random.choice(decimal_place_values)
 
+            if place_value == "ones":
+                wrong = int(get_digit(number1, 0))
+            
             if place_value == "tenths":
                 wrong= int(get_digit(number1, -1))
                 
@@ -1368,6 +1371,12 @@ class g4_number_sense_decimal_place_value():
             
             if wrong != self.answer and wrong not in self.wrong_answers: 
                 self.wrong_answers.append(wrong)
+            
+            elif wrong == self.answer or wrong in self.wrong_answers:
+                digit = random.randint(1,9)
+                if digit != self.answer and digit not in self.wrong_answers:
+                    self.wrong_answers.append(digit)
+    
         self.choices = [self.answer] + self.wrong_answers
         random.shuffle(self.choices)
         self.correct_index = self.choices.index(self.answer)
@@ -1489,6 +1498,12 @@ class g4_number_sense_place_value_big_number_digit():
             
             if wrong != self.answer and wrong not in self.wrong_answers: 
                 self.wrong_answers.append(wrong)
+            
+            elif wrong == self.answer or wrong in self.wrong_answers:
+                digit = random.randint(1,9)
+                if digit != self.answer and digit not in self.wrong_answers:
+                    self.wrong_answers.append(digit)
+                    
         self.choices = [self.answer] + self.wrong_answers
         random.shuffle(self.choices)
         self.correct_index = self.choices.index(self.answer)
@@ -1722,6 +1737,7 @@ class g4_number_sense_big_number_in_words():
     def print_choices(self):
         d = pd.DataFrame(self.choices, ['a', 'b', 'c', 'd'])
         d.columns = ['']
+        pd.set_option('max_colwidth', 600)
         return d
     
     def student_answer(self, student_answer):
@@ -1912,14 +1928,20 @@ class g4_number_sense_decimal_round():
         self.attr3 = 4
         place_value = random.choice(decimal_place_values_singular)
        
-        number1= round(random.uniform(1, 10), 4)
+        number1= round(random.uniform(2, 10), 4)
         
+        if place_value == "whole number":
+            self.answer = round(number1,1)
+            number = round(number1,0)
+            
         if place_value == "tenth":
             self.answer = round(number1,2)
             number = round(number1,1)  
+            
         if place_value == "hundredth":
             self.answer = round(number1,3)
             number = round(number1,2)
+            
         if place_value == "thousandth":
             self.answer = round(number1,4)
             number = round(number1,3)
@@ -1929,7 +1951,11 @@ class g4_number_sense_decimal_round():
         
         while len(self.wrong_answers)<3:
             place_value = random.choice(decimal_place_values_singular)
-
+            
+            if place_value == "whole number":
+                number1=number1-1
+                wrong = round(number1,1)
+                
             if place_value == "tenth":
                 number1=number1-.5
                 wrong = round(number1,2)
@@ -2284,7 +2310,8 @@ class g4_pattern_number_of_teams_table():
         self.correct_letter = ['a', 'b', 'c', 'd'][self.correct_index]
 
     def print_question(self):
-        return self.question, self.question_df
+        print(self.question_df.to_string(index=False))
+        return self.question
     
     def print_choices(self):
         d = pd.DataFrame(self.choices, ['a', 'b', 'c', 'd'])
@@ -2407,11 +2434,10 @@ class g4_number_sense_decimal_largest_value():
     size = size, number1 = number1, number2 = number2, 
     number3 = number3, number4 = number4)
         self.wrong_answers = []
-        while len(self.wrong_answers)<3:
-            for number in numbers:
-                wrong = number
-                if wrong != self.answer and wrong not in self.wrong_answers: 
-                    self.wrong_answers.append(wrong)
+        for number in numbers:
+            wrong = number
+            if wrong != self.answer and wrong not in self.wrong_answers: 
+                self.wrong_answers.append(wrong)
         self.choices = [self.answer] + self.wrong_answers
         random.shuffle(self.choices)
         self.correct_index = self.choices.index(self.answer)
@@ -2446,16 +2472,10 @@ class g4_estimation_division_running_problem():
    
         self.question = "{male_actor} ran a total of {number1} minutes in a {number2}-day period. He ran the same number of minutes each day. What is the closest to the number of minutes {male_actor} ran each day?".format(male_actor = random.choice(male_actors), number2= number2, number1 = number1) 
         self.wrong_answers = []
-        wrong1 = np.random.randint(low = 2,high=10,size=10)
-        wrong2 = np.random.randint(low = 20,high=60,size=10) *wrong1
-        wrong = wrong2/wrong1
-        wrong = np.round(wrong, -1)
-        wrong = np.unique(wrong[wrong!=self.answer])
-        np.random.shuffle(wrong)
-        wrong = wrong[0:3].tolist()
+        wrong = [20, 30, 40, 50, 60]
         for i in wrong:
-            i = int(i)
-            self.wrong_answers.append(i)
+            if i != self.answer and len(self.wrong_answers)<=2:
+                self.wrong_answers.append(i)
         self.choices = [self.answer] + self.wrong_answers
         random.shuffle(self.choices)
         self.correct_index = self.choices.index(self.answer)
