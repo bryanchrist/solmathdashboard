@@ -50,4 +50,4 @@ toposort==1.7
 
 tensorflow==2.10.0
 
-turtle
+mobilechelonian==0.5
