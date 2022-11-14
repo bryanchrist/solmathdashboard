@@ -6,6 +6,7 @@ from num2words import num2words
 import inspect
 import matplotlib.pyplot as plt
 import numpy as np
+import IPython.display as dis
 
 methods = ["repeated addition", "grouping", "the box method", "the standard algorithm", "any method you want"]
 male_actors = ["Sam", "Levi", "Nyzir", "Tyrek", "Antonio", "Batman", "Robin"]
@@ -615,6 +616,12 @@ class g4_number_sense__comparison_running_table():
                            [random.choice(female_actors), round(random.uniform(13, 14), 2)]]
         time = random.choice(times)
         self.question_df = pd.DataFrame(question_data, columns=['Name', 'Time (in seconds)'])
+        self.markdown_table = f'''| Name  | Time (in seconds) |
+|-------|-------------------|
+| {question_data[0][0]} | {question_data[0][1]}|
+| {question_data[1][0]} | {question_data[1][1]}|
+| {question_data[2][0]} | {question_data[2][1]}|
+| {question_data[3][0]}  | {question_data[3][1]}|'''  
         if time == "fastest":
             self.answer = max(self.question_df['Time (in seconds)'])
         if time =="slowest":
@@ -626,7 +633,7 @@ class g4_number_sense__comparison_running_table():
         self.correct_letter = ['a', 'b', 'c', 'd'][self.correct_index]
         
     def print_question(self):
-        print(self.question_df.to_string(index=False))
+        dis.display(dis.Markdown(self.markdown_table))
         return self.question
     
     def print_choices(self):
@@ -1125,10 +1132,10 @@ class g4_computation_multiplication_selling_items():
         return d
     
     def student_answer(self, student_answer):
-        if student_answer not in ['a', 'b', 'c', 'd']:
-            return "Please type a, b, c, or d."
         if student_answer == self.correct_letter:
             return "You got the right answer. Nice work!"
+        if student_answer not in ['a', 'b', 'c', 'd']:
+            return "Please type a, b, c, or d."
         if student_answer!= self.correct_letter:
             return "You didn't get the right answer this time. Keep trying and don't give up!"    
 
@@ -2293,6 +2300,12 @@ class g4_pattern_number_of_teams_table():
                             [number2, number2_b], 
                             [number3, number3_b], 
                            [number4, "?"]]
+        self.markdown_table = f"""| Total Number of Players | Number of Teams |
+|-------------------------|-----------------|
+| {number1}               | {number1_b}               |
+| {number2}               | {number2_b}               |
+| {number3}                      | {number3_b}               |
+| {number4}                      | ?               |"""
         self.question_df = pd.DataFrame(question_data, columns=['Total Number of Players', 'Number of Teams'])
         self.question = "The table shows the total number of players on different numbers of {sport} teams in a tournament. The pattern continues in the same way. How many {sport} teams are needed for a total of {number4} players?".format(number4=number4, sport = random.choice(sports))
         self.wrong_answers = []
@@ -2310,7 +2323,7 @@ class g4_pattern_number_of_teams_table():
         self.correct_letter = ['a', 'b', 'c', 'd'][self.correct_index]
 
     def print_question(self):
-        print(self.question_df.to_string(index=False))
+        dis.display(dis.Markdown(self.markdown_table))
         return self.question
     
     def print_choices(self):
