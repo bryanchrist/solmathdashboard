@@ -24,7 +24,7 @@ ghostscript==0.7
 
 num2words==0.5.12
 
-torch==1.12.1
+torch==1.13.0
 
 torchvision==0.13.1
 
@@ -55,3 +55,11 @@ mobilechelonian==0.5
 dash==2.7.0
 
 jupyter-dash==0.4.2
+
+dash-bootstrap-components==1.2.1
+
+dash-table-experiments==0.6.0
+
+pymongo==4.3.2
+
+lxml==4.9.1

@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM ubuntu:latest
+FROM python:3.10.8-bullseye
 #Install ubuntu
 
 RUN apt-get -y update
@@ -9,10 +9,12 @@ RUN apt-get install -y python3-pip
 #Install PYTHON
 
 COPY requirements.txt .
- 
+
+RUN pip install --upgrade pip
+
 RUN pip install -r requirements.txt
 
-RUN apt-get install -y tesseract-ocr
+#RUN apt-get install -y tesseract-ocr
 
 RUN apt-get -y install git
 #install Git
@@ -31,6 +33,7 @@ apt-get install -y nodejs
 
 RUN npm install -g dbdocs
 
+RUN jupyter lab build -y && jupyter lab clean -y
 # INSTALLING ANACONDA
 # Will copy from existing Docker image
 COPY --from=continuumio/miniconda3:4.12.0 /opt/conda /opt/conda
@@ -47,6 +50,8 @@ WORKDIR /solmathdashboard
 
 EXPOSE 8888
 #DEFAULT PORT FOR JUPYTER LAB SO IT CAN RUN 
+
+EXPOSE 8050
 
 CMD ["jupyter", "lab","--ip=0.0.0.0","--allow-root"]
 #BUILDS JUPYTER LAB for some reason must be a list of each individual word in the command line

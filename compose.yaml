@@ -5,3 +5,4 @@ services:
             - ./:/solmathdashboard
         ports:
             - "8889:8888"
+            - "8050:8050"
