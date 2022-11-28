@@ -1,6 +1,5 @@
 import random
 import pandas as pd
-#from fractions import Fraction
 import math
 from num2words import num2words
 import inspect
@@ -623,9 +622,9 @@ class g4_number_sense__comparison_running_table():
 | {question_data[2][0]} | {question_data[2][1]}|
 | {question_data[3][0]}  | {question_data[3][1]}|'''  
         if time == "fastest":
-            self.answer = max(self.question_df['Time (in seconds)'])
-        if time =="slowest":
             self.answer = min(self.question_df['Time (in seconds)'])
+        if time =="slowest":
+            self.answer = max(self.question_df['Time (in seconds)'])
         self.question = "The table shows the time it took 4 students to run a 40 meter race. Which time was the {time} time?".format(time = time)
         self.choices = self.question_df['Time (in seconds)'].tolist()
         random.shuffle(self.choices)
@@ -809,7 +808,6 @@ class g4_computation_decimal_addition():
             return "You didn't get the right answer this time. Keep trying and don't give up!"
 
 
-# Not sure how to convert to MC 
 class g4_computation_fraction_addition():
     def __init__(self):
         
@@ -887,7 +885,6 @@ class g4_computation_decimal_subtraction_drinks():
         if student_answer!= self.correct_letter:
             return "You didn't get the right answer this time. Keep trying and don't give up!"
 
-#Weary about the numbers I chose here
 class g4_computation_lcm_word_problem():
     def __init__(self):
         
@@ -1198,9 +1195,6 @@ class g4_computation_subtraction_word_problem():
             return "You didn't get the right answer this time. Keep trying and don't give up!"    
 
 
-
-        
-#same problem with fractions
 class g4_computation_fraction_subtraction():
     def __init__(self):
         
@@ -1894,13 +1888,7 @@ class g4_number_sense_round_big_number():
         if student_answer!= self.correct_letter:
             return "You didn't get the right answer this time. Keep trying and don't give up!" 
         
-        
-#question 22 is about equivalent fractions but it is an image
-
-#question 23 is also a fraction picture
-
 class g4_number_sense_fraction_ordering():
-    #Question 24 would be better as a drag and drop 
     def __init__(self):
         
         self.attr1 = "Number and Number Sense"
@@ -1960,19 +1948,19 @@ class g4_number_sense_decimal_round():
             place_value = random.choice(decimal_place_values_singular)
             
             if place_value == "whole number":
-                number1=number1-1
+                number1=number1-2
                 wrong = round(number1,1)
                 
             if place_value == "tenth":
-                number1=number1-.5
+                number1=number1-1
                 wrong = round(number1,2)
                 
             if place_value == "hundredth":
-                number1=number1-.05
+                number1=number1-.1
                 wrong = round(number1,3)
                 
             if place_value == "thousandth":
-                number1=number1-.005
+                number1=number1-.01
                 wrong = round(number1,4)
             
             if wrong != self.answer and wrong not in self.wrong_answers: 
@@ -1998,8 +1986,6 @@ class g4_number_sense_decimal_round():
         if student_answer!= self.correct_letter:
             return "You didn't get the right answer this time. Keep trying and don't give up!" 
 
-
-#Not sure if this is too hard
 class g4_geometry_shapes_angles():
     def __init__(self):
         
@@ -2046,11 +2032,6 @@ class g4_geometry_shapes_angles():
         if student_answer!= self.correct_letter:
             return "You didn't get the right answer this time. Keep trying and don't give up!" 
 
-
-#question 27 is a picture of a comb asking about length 
-
-#question 28 is about parallel lines
-
 class g4_measurement_pounds_to_ounces():
     def __init__(self):
         
@@ -2090,8 +2071,6 @@ class g4_measurement_pounds_to_ounces():
             return "You got the right answer. Nice work!"
         if student_answer!= self.correct_letter:
             return "You didn't get the right answer this time. Keep trying and don't give up!" 
-
-#30 is about figures that are congruent
 
 class g4_measurement_gallons_to_pints():
     def __init__(self):
@@ -2151,7 +2130,6 @@ class g4_measurement_time_elapsed_sports_team():
         minutes = remainder * 60
         minutes= round(minutes)
         self.answer = str(hours) + " hours " + str(minutes) + " minutes"
-        #not sure how to log the answer here- looks right but would need to double check and the formatting might need to change, consider changing so there can be less than 10 minutes in minute
         self.question = "A {sports} team left the school at {hour1}:{minute1} P.M. and returned at {hour2}:{minute2} P.M. What was the total amount of time that passed between the time this team left and returned to the school?".format(sports = random.choice(sports), hour1= hour1, 
         minute1=minute1, hour2=hour2, minute2=minute2)
         self.wrong_answers = []
@@ -2190,10 +2168,6 @@ class g4_measurement_time_elapsed_sports_team():
             return "You got the right answer. Nice work!"
         if student_answer!= self.correct_letter:
             return "You didn't get the right answer this time. Keep trying and don't give up!" 
-
-##Not sure how to put 33 into a question- asks for objects that weigh 1 KG - would need to be multiple choice
-#34 is a picture problem
-#35 is also a picture
 
 class g4_measurement_meters_to_millimeters():
     def __init__(self):
@@ -2238,11 +2212,6 @@ class g4_measurement_meters_to_millimeters():
         if student_answer!= self.correct_letter:
             return "You didn't get the right answer this time. Keep trying and don't give up!" 
 
-#37 is a graphical picture
-#38 is also a picture for measurement and geometry
-#39 is also a picture
-
-#40 needs to be multiple choice- multiple equations and asking which is true- this is my best try:
 class g4_algebra_make_equation_true():
     def __init__(self):
         
@@ -2278,8 +2247,6 @@ class g4_algebra_make_equation_true():
             return "You got the right answer. Nice work!"
         if student_answer!= self.correct_letter:
             return "You didn't get the right answer this time. Keep trying and don't give up!" 
-
-#41 needs to be a point and click graph- don't know how to build one but know it is possible
 
 class g4_pattern_number_of_teams_table():
     def __init__(self):
@@ -2339,10 +2306,6 @@ class g4_pattern_number_of_teams_table():
         if student_answer!= self.correct_letter:
             return "You didn't get the right answer this time. Keep trying and don't give up!" 
 
-#43 is a number line
-
-#44 is a graph 
-
 class g4_probability_no_chance():
     def __init__(self):
         
@@ -2380,11 +2343,6 @@ class g4_probability_no_chance():
             return "You got the right answer. Nice work!"
         if student_answer!= self.correct_letter:
             return "You didn't get the right answer this time. Keep trying and don't give up!" 
-
-        
-#46 and 47 need to be multiple choice
-#48 is a point and click number line
-#49 needs to print 4 random dfs 
 
 class g4_pattern_increasing_numbers():
     def __init__(self):

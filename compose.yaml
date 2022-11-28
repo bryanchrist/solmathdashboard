@@ -1,8 +1,30 @@
 services:
     jupyter:
         image: solmathdashboard
+        env_file:
+            - .env
         volumes:
             - ./:/solmathdashboard
         ports:
             - "8889:8888"
             - "8050:8050"
+        networks:
+            - dbnetwork
+            
+    mongo:
+        image: mongo:latest
+        env_file:
+            - .env
+        volumes:
+            - sol_mongodata:/data/db
+            - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+        ports:
+            - "27017:27017"
+        networks:
+            - dbnetwork
+
+volumes:
+    sol_mongodata:
+
+networks:
+    dbnetwork:
