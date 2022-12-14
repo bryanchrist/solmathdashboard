@@ -1,46 +1,46 @@
-,Class,Grade_level,Standard,Topic
-0,<class 'templates.g4_algebra_make_equation_true'>,4,"Probability, Statistics, Patterns, Functions, and Algebra",Algebra
-1,<class 'templates.g4_computation_big_num_addition'>,4,Computation and Estimation,Addition/Subtraction
-2,<class 'templates.g4_computation_big_num_subtraction'>,4,Computation and Estimation,Addition/Subtraction
-3,<class 'templates.g4_computation_decimal_addition'>,4,Computation and Estimation,Decimal Addition/Subtraction
-4,<class 'templates.g4_computation_decimal_subtraction_drinks'>,4,Computation and Estimation,Decimal Addition/Subtraction
-5,<class 'templates.g4_computation_division_statement'>,4,Computation and Estimation,Division
-6,<class 'templates.g4_computation_fraction_addition'>,4,Computation and Estimation,Fraction Addition/Subtraction
-7,<class 'templates.g4_computation_fraction_subtraction'>,4,Computation and Estimation,Fraction Addition/Subtraction
-8,<class 'templates.g4_computation_largest_common_factor_word_problem'>,4,Computation and Estimation,Common Factor
-9,<class 'templates.g4_computation_lcm_word_problem'>,4,Computation and Estimation,Least Common Multiple
-10,<class 'templates.g4_computation_multiplication_double_bags'>,4,Computation and Estimation,Multiplication
-11,<class 'templates.g4_computation_multiplication_female_bags'>,4,Computation and Estimation,Multiplication
-12,<class 'templates.g4_computation_multiplication_fortnite'>,4,Computation and Estimation,Multiplication
-13,<class 'templates.g4_computation_multiplication_male_bags'>,4,Computation and Estimation,Multiplication
-14,<class 'templates.g4_computation_multiplication_selling_items'>,4,Computation and Estimation,Multiplication
-15,<class 'templates.g4_computation_multiplication_situps'>,4,Computation and Estimation,Multiplication
-16,<class 'templates.g4_computation_multiplication_specific_method'>,4,Computation and Estimation,Multiplication
-17,<class 'templates.g4_computation_multiplication_two_digit_word_problem'>,4,Computation and Estimation,Multiplication
-18,<class 'templates.g4_computation_multiplication_with_drinks'>,4,Computation and Estimation,Multiplication
-19,<class 'templates.g4_computation_subtraction_word_problem'>,4,Computation and Estimation,Addition/Subtraction
-20,<class 'templates.g4_estimation_division_running_problem'>,4,Computation and Estimation,Division
-21,<class 'templates.g4_estimation_multiplication_store'>,4,Computation and Estimation,Multiplication
-22,<class 'templates.g4_functions_weather_graph'>,4,"Probability, Statistics, Patterns, Functions, and Algebra",Graph
-23,<class 'templates.g4_geometry_shapes_angles'>,4,Measurement and Geometry,Geometry
-24,<class 'templates.g4_measurement_gallons_to_pints'>,4,Measurement and Geometry,Measurement
-25,<class 'templates.g4_measurement_meters_to_millimeters'>,4,Measurement and Geometry,Measurement
-26,<class 'templates.g4_measurement_pounds_to_ounces'>,4,Measurement and Geometry,Measurement
-27,<class 'templates.g4_measurement_time_elapsed_sports_team'>,4,Measurement and Geometry,Time Elapsed
-28,<class 'templates.g4_number_sense__comparison_running_table'>,4,Number and Number Sense,Decimal Comparison
-29,<class 'templates.g4_number_sense_big_num_comparison'>,4,Number and Number Sense,Number Comparison
-30,<class 'templates.g4_number_sense_big_number_in_words'>,4,Number and Number Sense,Number in Words
-31,<class 'templates.g4_number_sense_decimal_in_words'>,4,Number and Number Sense,Decimal in Words
-32,<class 'templates.g4_number_sense_decimal_largest_value'>,4,Number and Number Sense,Decimal Comparison
-33,<class 'templates.g4_number_sense_decimal_place_value'>,4,Number and Number Sense,Decimal Place Value
-34,<class 'templates.g4_number_sense_decimal_round'>,4,Number and Number Sense,Decimal Rounding
-35,<class 'templates.g4_number_sense_fraction_ordering'>,4,Number and Number Sense,Fraction Ordering
-36,<class 'templates.g4_number_sense_identify_fraction_number_line'>,4,Number and Number Sense,Fraction Number Line
-37,<class 'templates.g4_number_sense_place_value_big_number_digit'>,4,Number and Number Sense,Place Value
-38,<class 'templates.g4_number_sense_place_value_big_number_value'>,4,Number and Number Sense,Place Value
-39,<class 'templates.g4_number_sense_round_big_number'>,4,Number and Number Sense,Rounding
-40,<class 'templates.g4_pattern_increasing_numbers'>,4,"Probability, Statistics, Patterns, Functions, and Algebra",Patterns
-41,<class 'templates.g4_pattern_number_of_teams_table'>,4,"Probability, Statistics, Patterns, Functions, and Algebra",Patterns
-42,<class 'templates.g4_probability_coin_flip_number_line'>,4,"Probability, Statistics, Patterns, Functions, and Algebra",Probability
-43,<class 'templates.g4_probability_dice_roll_number_line'>,4,"Probability, Statistics, Patterns, Functions, and Algebra",Probability
-44,<class 'templates.g4_probability_no_chance'>,4,"Probability, Statistics, Patterns, Functions, and Algebra",Probability
+,index,Class,Grade_level,Standard,Topic
+0,0,<class 'templates.g4_algebra_make_equation_true'>,4,"Probability, Statistics, Patterns, Functions, and Algebra",Algebra
+1,1,<class 'templates.g4_computation_big_num_addition'>,4,Computation and Estimation,Addition/Subtraction
+2,2,<class 'templates.g4_computation_big_num_subtraction'>,4,Computation and Estimation,Addition/Subtraction
+3,3,<class 'templates.g4_computation_decimal_addition'>,4,Computation and Estimation,Decimal Addition/Subtraction
+4,4,<class 'templates.g4_computation_decimal_subtraction_drinks'>,4,Computation and Estimation,Decimal Addition/Subtraction
+5,5,<class 'templates.g4_computation_division_statement'>,4,Computation and Estimation,Division
+6,6,<class 'templates.g4_computation_fraction_addition'>,4,Computation and Estimation,Fraction Addition/Subtraction
+7,7,<class 'templates.g4_computation_fraction_subtraction'>,4,Computation and Estimation,Fraction Addition/Subtraction
+8,8,<class 'templates.g4_computation_largest_common_factor_word_problem'>,4,Computation and Estimation,Common Factor
+9,9,<class 'templates.g4_computation_lcm_word_problem'>,4,Computation and Estimation,Least Common Multiple
+10,10,<class 'templates.g4_computation_multiplication_double_bags'>,4,Computation and Estimation,Multiplication
+11,11,<class 'templates.g4_computation_multiplication_female_bags'>,4,Computation and Estimation,Multiplication
+12,12,<class 'templates.g4_computation_multiplication_fortnite'>,4,Computation and Estimation,Multiplication
+13,13,<class 'templates.g4_computation_multiplication_male_bags'>,4,Computation and Estimation,Multiplication
+14,14,<class 'templates.g4_computation_multiplication_selling_items'>,4,Computation and Estimation,Multiplication
+15,15,<class 'templates.g4_computation_multiplication_situps'>,4,Computation and Estimation,Multiplication
+16,16,<class 'templates.g4_computation_multiplication_specific_method'>,4,Computation and Estimation,Multiplication
+17,17,<class 'templates.g4_computation_multiplication_two_digit_word_problem'>,4,Computation and Estimation,Multiplication
+18,18,<class 'templates.g4_computation_multiplication_with_drinks'>,4,Computation and Estimation,Multiplication
+19,19,<class 'templates.g4_computation_subtraction_word_problem'>,4,Computation and Estimation,Addition/Subtraction
+20,20,<class 'templates.g4_estimation_division_running_problem'>,4,Computation and Estimation,Division
+21,21,<class 'templates.g4_estimation_multiplication_store'>,4,Computation and Estimation,Multiplication
+22,22,<class 'templates.g4_functions_weather_graph'>,4,"Probability, Statistics, Patterns, Functions, and Algebra",Graph
+23,23,<class 'templates.g4_geometry_shapes_angles'>,4,Measurement and Geometry,Geometry
+24,24,<class 'templates.g4_measurement_gallons_to_pints'>,4,Measurement and Geometry,Measurement
+25,25,<class 'templates.g4_measurement_meters_to_millimeters'>,4,Measurement and Geometry,Measurement
+26,26,<class 'templates.g4_measurement_pounds_to_ounces'>,4,Measurement and Geometry,Measurement
+27,27,<class 'templates.g4_measurement_time_elapsed_sports_team'>,4,Measurement and Geometry,Time Elapsed
+28,28,<class 'templates.g4_number_sense__comparison_running_table'>,4,Number and Number Sense,Decimal Comparison
+29,29,<class 'templates.g4_number_sense_big_num_comparison'>,4,Number and Number Sense,Number Comparison
+30,30,<class 'templates.g4_number_sense_big_number_in_words'>,4,Number and Number Sense,Number in Words
+31,31,<class 'templates.g4_number_sense_decimal_in_words'>,4,Number and Number Sense,Decimal in Words
+32,32,<class 'templates.g4_number_sense_decimal_largest_value'>,4,Number and Number Sense,Decimal Comparison
+33,33,<class 'templates.g4_number_sense_decimal_place_value'>,4,Number and Number Sense,Decimal Place Value
+34,34,<class 'templates.g4_number_sense_decimal_round'>,4,Number and Number Sense,Decimal Rounding
+35,35,<class 'templates.g4_number_sense_fraction_ordering'>,4,Number and Number Sense,Fraction Ordering
+36,36,<class 'templates.g4_number_sense_identify_fraction_number_line'>,4,Number and Number Sense,Identify Fraction
+37,37,<class 'templates.g4_number_sense_place_value_big_number_digit'>,4,Number and Number Sense,Place Value
+38,38,<class 'templates.g4_number_sense_place_value_big_number_value'>,4,Number and Number Sense,Place Value
+39,39,<class 'templates.g4_number_sense_round_big_number'>,4,Number and Number Sense,Rounding
+40,40,<class 'templates.g4_pattern_increasing_numbers'>,4,"Probability, Statistics, Patterns, Functions, and Algebra",Patterns
+41,41,<class 'templates.g4_pattern_number_of_teams_table'>,4,"Probability, Statistics, Patterns, Functions, and Algebra",Patterns
+42,42,<class 'templates.g4_probability_coin_flip_number_line'>,4,"Probability, Statistics, Patterns, Functions, and Algebra",Number Line
+43,43,<class 'templates.g4_probability_dice_roll_number_line'>,4,"Probability, Statistics, Patterns, Functions, and Algebra",Number Line
+44,44,<class 'templates.g4_probability_no_chance'>,4,"Probability, Statistics, Patterns, Functions, and Algebra",Probability

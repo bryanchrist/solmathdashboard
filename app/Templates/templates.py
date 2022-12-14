@@ -6,6 +6,10 @@ import inspect
 import matplotlib.pyplot as plt
 import numpy as np
 import IPython.display as dis
+import plotly.express as px
+import plotly.tools as tls
+import base64
+import io
 
 methods = ["repeated addition", "grouping", "the box method", "the standard algorithm", "any method you want"]
 male_actors = ["Sam", "Levi", "Nyzir", "Tyrek", "Antonio", "Batman", "Robin"]
@@ -83,29 +87,31 @@ class g4_functions_weather_graph():
         day3=random.randint(0,70)
         day4=random.randint(0,70)
         self.temperatures = [day1, day2, day3, day4]
-        target_val = random.randint(0,70)
-        i =closest_value(self.temperatures, target_val)
+        self.target_val = random.randint(0,70)
+        i =closest_value(self.temperatures, self.target_val)
         self.answer = self.days[i]
-        self.question = "This graph shows the morning temperature in a city for each of four days. The morning temperature on Thursday was {target} degrees F. Based on the data in this graph, which day had a temperature closest to Thursday's temperature?".format(target= target_val)
-        self.wrong_answers = []
-        while len(self.wrong_answers)<3:
-            wrong = random.choice(self.days)
-            if wrong != self.answer and wrong not in self.wrong_answers:
-                self.wrong_answers.append(wrong)
-        self.choices = [self.answer] + self.wrong_answers
-        random.shuffle(self.choices)
+        self.question = "This graph shows the morning temperature in a city for each of four days. The morning temperature on Thursday was {target} degrees F. Based on the data in this graph, which day had a temperature closest to Thursday's temperature?".format(target= self.target_val)
+        self.choices= self.days
         self.correct_index = self.choices.index(self.answer)
         self.correct_letter = ['a', 'b', 'c', 'd'][self.correct_index]
+        # self.correct_letter = ['a', 'b', 'c', 'd'][self.correct_index]
+        # self.wrong_answers = []
+        # while len(self.wrong_answers)<3:
+        #     wrong = random.choice(self.days)
+        #     if wrong != self.answer and wrong not in self.wrong_answers:
+        #         self.wrong_answers.append(wrong)
+        # self.choices = [self.answer] + self.wrong_answers
+        # random.shuffle(self.choices)
+        # self.correct_index = self.choices.index(self.answer)
+        # 
 
-    def print_question(self):
-        plt.plot(self.days, self.temperatures)
-        plt.title('Morning Temperature')
-        plt.xlabel('Day')
-        plt.ylabel('Temperature (Degrees F)')
-        plt.show()
-        return self.question
+    def print_graph(self):
+        df=pd.DataFrame(dict(Days=self.days, Temperature = self.temperatures))
+        fig = px.line(df, x='Days', y='Temperature', title = 'Morning Temperature in Degrees F')
+        return fig
         
-
+    def print_question(self):
+        return self.question
     
     def print_choices(self):
         d = pd.DataFrame(self.choices, ['a', 'b', 'c', 'd'])
@@ -124,7 +130,7 @@ class g4_number_sense_identify_fraction_number_line():
 
     def __init__(self):
         self.attr1="Number and Number Sense"
-        self.attr2= "Fraction Number Line"
+        self.attr2= "Identify Fraction"
         self.attr3 = 4
         self.px = random.randint(0,10)
         if self.px<.625 and self.px>0:
@@ -156,6 +162,9 @@ class g4_number_sense_identify_fraction_number_line():
         self.question = "Which fraction on the number line is the red point closest to?"
             
     def print_question(self):
+        return self.question
+    
+    def display_graph(self):
         #set up figure
         fig = plt.figure()
         ax = fig.add_subplot(111)
@@ -193,10 +202,12 @@ class g4_number_sense_identify_fraction_number_line():
         plt.text(xmin, y-.9, '0', horizontalalignment='center')
         plt.text(xmax, y-.9, '1', horizontalalignment='center')
         plt.text(xmid, y-.9, '1/2', horizontalalignment='center')
-
         plt.axis('off')
-        plt.show()
-        return self.question
+        buf = io.BytesIO() # in-memory files
+        plt.savefig(buf, format = "png") # save to the above file object
+        plt.close()
+        data = base64.b64encode(buf.getbuffer()).decode("utf8") # encode to html elements
+        return "data:image/png;base64,{}".format(data)
         
         
     def student_answer(self, student_answer):
@@ -209,7 +220,7 @@ class g4_probability_coin_flip_number_line():
 
     def __init__(self):
         self.attr1 = "Probability, Statistics, Patterns, Functions, and Algebra"
-        self.attr2 = "Probability"
+        self.attr2 = "Number Line"
         self.attr3 = 4
         self.px = 5
         self.answer = 1/2
@@ -226,6 +237,10 @@ class g4_probability_coin_flip_number_line():
         
             
     def print_question(self):
+        return self.question
+        #student inputs answer directly 
+        
+    def display_graph(self):
         #set up figure
         fig = plt.figure()
         ax = fig.add_subplot(111)
@@ -274,11 +289,12 @@ class g4_probability_coin_flip_number_line():
         plt.text(xmin, y-.9, '0', horizontalalignment='center')
         plt.text(xmax, y-.9, '1', horizontalalignment='center')
         plt.text(xmid, y-.9, '1/2', horizontalalignment='center')
-
         plt.axis('off')
-        plt.show()
-        return self.question
-        #student inputs answer directly 
+        buf = io.BytesIO() # in-memory files
+        plt.savefig(buf, format = "png") # save to the above file object
+        plt.close()
+        data = base64.b64encode(buf.getbuffer()).decode("utf8") # encode to html elements
+        return "data:image/png;base64,{}".format(data)
     
     def student_answer(self, student_answer):
         if student_answer not in ['a', 'b', 'c', 'd']:
@@ -292,7 +308,7 @@ class g4_probability_dice_roll_number_line():
 
     def __init__(self):
         self.attr1 = "Probability, Statistics, Patterns, Functions, and Algebra"
-        self.attr2 = "Probability"
+        self.attr2 = "Number Line"
         self.attr3 = 4
         self.px = 1.666666666666666666666666666666667
         self.answer = 1/6
@@ -309,6 +325,10 @@ class g4_probability_dice_roll_number_line():
         
             
     def print_question(self):
+        return self.question
+        #student inputs answer directly 
+    
+    def display_graph(self):
         #set up figure
         fig = plt.figure()
         ax = fig.add_subplot(111)
@@ -358,9 +378,11 @@ class g4_probability_dice_roll_number_line():
         plt.text(xmid, y-.9, '1/2', horizontalalignment='center')
 
         plt.axis('off')
-        plt.show()
-        return self.question
-        #student inputs answer directly 
+        buf = io.BytesIO() # in-memory files
+        plt.savefig(buf, format = "png") # save to the above file object
+        plt.close()
+        data = base64.b64encode(buf.getbuffer()).decode("utf8") # encode to html elements
+        return "data:image/png;base64,{}".format(data)
     
     def student_answer(self, student_answer):
         if student_answer not in ['a', 'b', 'c', 'd']:
