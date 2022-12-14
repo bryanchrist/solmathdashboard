@@ -1,6 +1,0 @@
-@app.callback([Output(component_id= 'graph', component_property= 'figure'),
-               Output(component_id = 'correct_answer2', component_property = 'data')],
-              [Input(component_id = 'question_index', component_property='data'),
-               Input(component_id='num_questions',component_property="value"),
-               Input(component_id = 'submit', component_property= 'n_clicks'),
-               Input(component_id = 'target_val', component_property= 'data')])

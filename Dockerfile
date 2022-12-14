@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 FROM python:3.10.8-bullseye
-#Install ubuntu
+#Install linux
 
 RUN apt-get -y update
 #update apt
@@ -39,11 +39,6 @@ RUN jupyter lab build -y && jupyter lab clean -y
 COPY --from=continuumio/miniconda3:4.12.0 /opt/conda /opt/conda
 
 ENV PATH=/opt/conda/bin:$PATH
-    
-#Get turtle up and running
-#RUN conda env list
-#RUN conda create -n turtle
-#RUN conda activate turtle
 
 WORKDIR /solmathdashboard
 #DEFINES DIRECTORY FOR JUPYTER NOTEBOOKS FOR FILES
@@ -53,7 +48,8 @@ EXPOSE 8888
 
 EXPOSE 8050
 
-CMD ["jupyter", "lab","--ip=0.0.0.0","--allow-root"]
-#BUILDS JUPYTER LAB for some reason must be a list of each individual word in the command line
+#CMD ["jupyter", "lab","--ip=0.0.0.0","--allow-root"]
+#BUILDS JUPYTER LAB for development environment - run this if you want to develop the code
 
-#DONT DEFINE ENV IN DOCKER FILE BECAUSE IF YOU PUSH TO DOCKER HUB EVERYONE CAN SEE IT
+CMD ["python", "/solmathdashboard/app/templates/app.py"]
+#run this if you want to deploy the app upon launching the docker container
